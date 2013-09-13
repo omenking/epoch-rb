@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'epoch/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'epoch'
+  spec.name          = 'epoch-rb'
   spec.version       = Epoch::VERSION
   spec.authors       = ['Monsterbox Productions']
   spec.email         = ['info@monsterboxpro.com']
