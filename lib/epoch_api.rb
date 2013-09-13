@@ -1,8 +1,8 @@
 require 'httparty'
 require 'ostruct'
-require 'epoch/version'
+require 'epoch_api/version'
 
-module Epoch
+module EpochApi
   class UnknownRoom         < StandardError; end
   class Unauthorized        < StandardError; end
   class UnknownResponseCode < StandardError; end

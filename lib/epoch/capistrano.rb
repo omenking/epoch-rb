@@ -1,4 +1,4 @@
-require 'epoch'
+require 'epoch_api'
 
 Capistrano::Configuration.instance(:must_exist).load do
   set :epoch_send_notification, false
@@ -48,7 +48,7 @@ Capistrano::Configuration.instance(:must_exist).load do
 
     def send message, options
       if fetch(:epoch_client, nil).nil?
-        set :epoch_client, Epoch::Client.new epoch_token
+        set :epoch_client, EpochApi::Client.new epoch_token
       end
 
       begin

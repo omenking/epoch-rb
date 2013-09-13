@@ -1,3 +1,3 @@
-module Epoch
+module EpochApi
   VERSION = '0.1.0'
 end

@@ -10,10 +10,10 @@ task default: :spec
 
 require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
-  version = Epoch::VERSION
+  version = EpochApi::VERSION
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = "epoch #{version}"
+  rdoc.title    = "epoch_api #{version}"
   rdoc.rdoc_files.include 'README*'
   rdoc.rdoc_files.include 'lib/**/*.rb'
 end

@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'epoch/version'
+require 'epoch_api/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'epoch-rb'
-  spec.version       = Epoch::VERSION
+  spec.name          = 'epoch_api'
+  spec.version       = EpochApi::VERSION
   spec.authors       = ['Monsterbox Productions']
   spec.email         = ['info@monsterboxpro.com']
   spec.description   = %q{Ruby library to interact with 3poch}
   spec.summary       = %q{Ruby library to interact with 3poch}
-  spec.homepage      = 'https://github.com/omenking/epoch-rb'
+  spec.homepage      = 'https://github.com/omenking/epoch'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($/)
