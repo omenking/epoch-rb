@@ -1,5 +1,4 @@
 require 'httparty'
-require 'ostruct'
 require 'epoch_api/version'
 
 module EpochApi
@@ -19,39 +18,24 @@ module EpochApi
 			self
     end
 
-    def message room_token, from, message, options = {color: 'yellow', notify: false}
+    def message room_id, from, message, options = {color: 'yellow', notify: false}
 			err_msg = "Username #{from} is `#{from.length} characters long. Limit is 15'" 
 			raise UsernameTooLong, err_msg if from.length > 15
 
       response = self.class.put "/#{room_id}/message",
-        query: { auth_token: @token },
         body: {
           from:    from,
           message: message,
           color:   options[:color],
-          notify:  options[:notify] ? 1 : 0 }
+          notify:  options[:notify] ? 1 : 0 },
+        headers: { "Authorization" => "Token token=#{@token}"}
 
-      _response response
-    end
-
-    def topic new_topic, options = {from: 'API'}
-
-      response = self.class.put "/#{room_id}/topic",
-        query: { auth_token: @token },
-        body: {
-          from: options[:from],
-          topic: new_topic}
-
-      _response response
-    end
-
-		def _response response
 			case response.code
 				when 200 then response.body
 				when 404 then raise UnknownRoom        , "Unknown room: `#{room_id}'"
 				when 401 then raise Unauthorized       , "Access denied to room `#{room_id}'"
 				else;         raise UnknownResponseCode, "Unexpected #{response.code} for room `#{room_id}'"
 			end
-		end
+    end
   end
 end

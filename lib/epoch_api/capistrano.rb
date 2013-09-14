@@ -35,7 +35,7 @@ Capistrano::Configuration.instance(:must_exist).load do
       environment_string = "#{stage} (#{env})" if self.respond_to?(:stage)
       location           = "#{deployment_name} to #{environment_string}"
 
-      send "#{human} finished deploying #{location}#{fetch(:epoch_with_migrations, '')}.", send_options)
+      send "#{human} finished deploying #{location}#{fetch(:epoch_with_migrations, '')}.", send_options
     end
 
     def send_options
@@ -48,11 +48,11 @@ Capistrano::Configuration.instance(:must_exist).load do
 
     def send message, options
       if fetch(:epoch_client, nil).nil?
-        set :epoch_client, EpochApi::Client.new epoch_token
+        set :epoch_client, EpochApi::Client.new(epoch_token)
       end
 
       begin
-        epoch_client.message epoch_room_token, deploy_user, message, options
+        epoch_client.message epoch_room_name, deploy_user, message, options
       rescue => e
         puts e.message
         puts e.backtrace
