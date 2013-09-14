@@ -70,7 +70,7 @@ Capistrano::Configuration.instance(:must_exist).load do
     end
 
     def message_color
-      fetch :epoch_color, nil
+      fetch :epoch_color, 'yellow'
     end
 
     def success_message_color
